@@ -21,7 +21,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import java.text.SimpleDateFormat
 import java.util.*
@@ -64,23 +66,31 @@ fun HistoryScreen() {
                 .fillMaxWidth()
                 .background(Color(0xFF055BB5))
                 .padding(vertical = 16.dp),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.TopStart // Konten default rata kiri atas
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth() // Pastikan lebar Column sesuai kontainer
+                    .padding(horizontal = 16.dp)
+            ) {
                 Text(
                     text = "Ilham Putra Arysila",
                     color = Color.White,
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.align(Alignment.Start) // Rata kiri
                 )
                 Text(
                     text = "NIM: 2333007051",
                     color = Color.White,
-                    style = MaterialTheme.typography.bodySmall
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.align(Alignment.Start) // Rata kiri
                 )
                 Text(
                     text = "Absensi Anda",
                     color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.align(Alignment.CenterHorizontally) // Rata tengah
                 )
             }
         }
@@ -106,15 +116,25 @@ fun HistoryScreen() {
                         containerColor = Color(0xFFF5F5F5) // Abu-abu terang
                     )
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(historyItem.date)
+                    Column(
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally // Untuk teks di tengah
+                    ) {
+                        Text(historyItem.date,
+                            modifier = Modifier.align(Alignment.Start))
                         Text(
                             text = "Berhasil melakukan absen",
                             color = Color.Green,
-                            style = MaterialTheme.typography.bodyLarge,
-                            modifier = Modifier.padding(vertical = 4.dp)
+                            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp),
+                            modifier = Modifier.padding(vertical = 20.dp),
+                            textAlign = TextAlign.Center // Rata tengah
                         )
-                        Text("Waktu Hadir: ${historyItem.time}")
+                        Text(
+                            text = "Waktu Hadir: ${historyItem.time}",
+                            modifier = Modifier.align(Alignment.End)
+                        )
                     }
                 }
             }
