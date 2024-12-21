@@ -38,12 +38,17 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        // Teks di bagian atas login form
         Text(
             text = "Absensi Mahasiswa\nPoliteknik Negeri Madiun",
             color = Color.White,
-            fontSize = 24.sp
+            fontSize = 24.sp,
+            modifier = Modifier.padding(bottom = 32.dp),
+            lineHeight = 32.sp, // Menambah spasi antara dua baris teks
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center
         )
-        Spacer(modifier = Modifier.height(32.dp))
+
+        // Username TextField
         TextField(
             value = username,
             onValueChange = { username = it },
@@ -52,6 +57,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             singleLine = true
         )
         Spacer(modifier = Modifier.height(16.dp))
+
+        // Password TextField
         TextField(
             value = password,
             onValueChange = { password = it },
@@ -70,6 +77,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             singleLine = true
         )
         Spacer(modifier = Modifier.height(16.dp))
+
+        // Login Button
         Button(
             onClick = {
                 if (username == "ilham" && password == "12345678") {
@@ -82,6 +91,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         ) {
             Text("LOGIN")
         }
+
+        // Error Message
         if (loginError) {
             Text(
                 text = "Username atau Password salah!",

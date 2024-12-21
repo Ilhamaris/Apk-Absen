@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
@@ -26,8 +27,8 @@ fun SplashScreen(onTimeout: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF002B7F)),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Center, // Agar konten ditata secara vertikal di tengah
+        horizontalAlignment = Alignment.CenterHorizontally // Agar konten ditata secara horizontal di tengah
     ) {
         Image(
             painter = painterResource(R.drawable.logo), // Ganti dengan logo Anda
@@ -38,7 +39,8 @@ fun SplashScreen(onTimeout: () -> Unit) {
             text = "Absensi Mahasiswa\nPoliteknik Negeri Madiun",
             color = Color.White,
             fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            textAlign = Center
         )
     }
 }
