@@ -62,7 +62,7 @@ fun HistoryScreen() {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.Blue)
+                .background(Color(0xFF055BB5))
                 .padding(vertical = 16.dp),
             contentAlignment = Alignment.Center
         ) {
@@ -124,7 +124,7 @@ fun HistoryScreen() {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.Blue)
+                .background(Color(0xFF055BB5))
                 .padding(vertical = 16.dp),
             contentAlignment = Alignment.Center
         ) {
@@ -141,7 +141,7 @@ fun HistoryScreen() {
                 Icon(
                     painter = painterResource(id = android.R.drawable.ic_menu_camera),
                     contentDescription = "Camera Icon",
-                    tint = Color.Blue,
+                    tint = Color.Black,
                     modifier = Modifier.size(32.dp)
                 )
             }
