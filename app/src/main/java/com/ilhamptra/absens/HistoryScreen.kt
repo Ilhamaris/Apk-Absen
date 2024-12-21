@@ -24,6 +24,11 @@ import java.util.*
 fun HistoryScreen() {
     val historyList = remember { mutableStateListOf<Pair<String, String>>() } // List to store history
 
+    fun getCurrentDateTime(): String {
+        val dateTimeFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        return dateTimeFormat.format(Date())
+    }
+
     fun getCurrentTime(): String {
         val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
         return timeFormat.format(Date())
@@ -31,14 +36,15 @@ fun HistoryScreen() {
 
     var photoTaken by remember { mutableStateOf(false) } // Track if a photo was successfully taken
 
-    // menampilkan hasil dari kamera
+    // Menampilkan hasil dari kamera
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
             photoTaken = true
+            val currentDate = getCurrentDateTime()
             val currentTime = getCurrentTime()
-            historyList.add("Berhasil melakukan absen" to currentTime)
+            historyList.add(currentDate to "Berhasil melakukan absen\nPada jam: $currentTime")
         }
     }
 
@@ -73,15 +79,15 @@ fun HistoryScreen() {
                         )
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(history.first)
-                            Text("Waktu Hadir: ${history.second}")
+                            Text(history.first) // Tanggal, bulan, dan tahun
+                            Text(history.second) // "Berhasil melakukan absen" dengan waktu
                         }
                     }
                 }
             }
         }
 
-        // ikon kamera
+        // Ikon kamera
         Icon(
             painter = painterResource(id = android.R.drawable.ic_menu_camera),
             contentDescription = "Camera Icon",
