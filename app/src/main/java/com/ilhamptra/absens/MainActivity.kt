@@ -42,17 +42,24 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-// fungsi untuk navigasi
 fun AppNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "splash") {
         composable("splash") {
-            SplashScreen(onTimeout = {
-                navController.navigate("login") {
-                    popUpTo("splash") { inclusive = true }
+            SplashScreen(
+                context = navController.context,
+                navigateToLogin = {
+                    navController.navigate("login") {
+                        popUpTo("splash") { inclusive = true }
+                    }
+                },
+                navigateToMain = {
+                    navController.navigate("history") {
+                        popUpTo("splash") { inclusive = true }
+                    }
                 }
-            })
+            )
         }
         composable("login") {
             LoginScreen(onLoginSuccess = {

@@ -1,5 +1,7 @@
 package com.ilhamptra.absens
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -19,10 +21,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-
 
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
@@ -30,6 +32,17 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     var password by remember { mutableStateOf("") }
     var isPasswordVisible by remember { mutableStateOf(false) }
     var loginError by remember { mutableStateOf(false) }
+
+    // Ambil context dari LocalContext di dalam composable
+    val context = LocalContext.current
+
+    // Fungsi untuk menyimpan status login
+    fun saveLoginStatus(context: Context) {
+        val sharedPreferences: SharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", true) // Tandai sebagai sudah login
+        editor.apply()
+    }
 
     Column(
         modifier = Modifier
@@ -82,6 +95,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         Button(
             onClick = {
                 if (username == "ilham" && password == "12345678") {
+                    // Simpan status login
+                    saveLoginStatus(context)
                     onLoginSuccess()
                 } else {
                     loginError = true
