@@ -1,5 +1,8 @@
 package com.ilhamptra.absens
 
+import android.content.Intent
+import android.provider.MediaStore
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -13,9 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Icon
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun HistoryScreen() {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -53,15 +59,20 @@ fun HistoryScreen() {
             }
         }
 
-        // menampilkan ikon kamera
+        // Camera icon at the bottom center
         Icon(
-            painter = painterResource(id = android.R.drawable.ic_menu_camera),
+            painter = painterResource(id = android.R.drawable.ic_menu_camera), // Use the default camera icon or replace it with your own
             contentDescription = "Camera Icon",
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(16.dp)
-                .size(48.dp),
-            tint = Color.Black
+                .size(48.dp)
+                .clickable {
+                    // Open the camera when clicked
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    context.startActivity(intent)
+                },
+            tint = Color.Black // You can change the icon color here
         )
     }
 }
