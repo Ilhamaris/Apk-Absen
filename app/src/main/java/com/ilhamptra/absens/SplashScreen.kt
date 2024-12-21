@@ -27,11 +27,11 @@ fun SplashScreen(onTimeout: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF002B7F)),
-        verticalArrangement = Arrangement.Center, // Agar konten ditata secara vertikal di tengah
-        horizontalAlignment = Alignment.CenterHorizontally // Agar konten ditata secara horizontal di tengah
+        verticalArrangement = Arrangement.Center, // vertikal di tengah
+        horizontalAlignment = Alignment.CenterHorizontally // horizontal di tengah
     ) {
         Image(
-            painter = painterResource(R.drawable.logo), // Ganti dengan logo Anda
+            painter = painterResource(R.drawable.logo),
             contentDescription = "Logo"
         )
         Spacer(modifier = Modifier.height(16.dp))

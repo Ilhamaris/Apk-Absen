@@ -3,15 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ilhamptra.absens">
 
-    <!-- Declare that the app uses a camera -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
-    <!-- Permission for using camera -->
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <!-- Permission to write to external storage (optional, needed for older APIs) -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
 
     <application
@@ -25,7 +20,6 @@
         android:theme="@style/Theme.Absens"
         tools:targetApi="31">
 
-        <!-- Main activity definition -->
         <activity
             android:name=".MainActivity"
             android:exported="true"

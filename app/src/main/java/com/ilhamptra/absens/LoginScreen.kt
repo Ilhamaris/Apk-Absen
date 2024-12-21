@@ -92,7 +92,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             Text("LOGIN")
         }
 
-        // Error Message
+        // pesan error
         if (loginError) {
             Text(
                 text = "Username atau Password salah!",

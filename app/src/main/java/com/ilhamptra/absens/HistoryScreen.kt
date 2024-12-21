@@ -31,12 +31,11 @@ fun HistoryScreen() {
 
     var photoTaken by remember { mutableStateOf(false) } // Track if a photo was successfully taken
 
-    // Launcher to handle result from camera intent
+    // menampilkan hasil dari kamera
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK && result.data != null) {
-            // Handle the result from the camera
             photoTaken = true
             val currentTime = getCurrentTime()
             historyList.add("Berhasil melakukan absen" to currentTime)
@@ -82,7 +81,7 @@ fun HistoryScreen() {
             }
         }
 
-        // Camera icon at the bottom center
+        // ikon kamera
         Icon(
             painter = painterResource(id = android.R.drawable.ic_menu_camera),
             contentDescription = "Camera Icon",
@@ -91,7 +90,6 @@ fun HistoryScreen() {
                 .padding(16.dp)
                 .size(48.dp)
                 .clickable {
-                    // Open the camera when clicked
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     launcher.launch(intent)
                 },

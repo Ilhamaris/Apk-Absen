@@ -15,26 +15,21 @@ import androidx.navigation.compose.rememberNavController
 import com.ilhamptra.absens.ui.theme.AbsensTheme
 
 class MainActivity : ComponentActivity() {
-    // Define the permission request launcher
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                // Permission granted, proceed with camera functionality
             } else {
-                // Permission denied, show a message or handle accordingly
             }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Check and request camera permission at runtime
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.CAMERA
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // If the permission is not granted, request it
             requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
 
@@ -47,6 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+// fungsi untuk navigasi
 fun AppNavigation() {
     val navController = rememberNavController()
 
