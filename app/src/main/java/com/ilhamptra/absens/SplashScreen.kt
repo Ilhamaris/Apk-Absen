@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,14 +28,15 @@ fun SplashScreen(onTimeout: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF002B7F)),
-        verticalArrangement = Arrangement.Center, // vertikal di tengah
-        horizontalAlignment = Alignment.CenterHorizontally // horizontal di tengah
+        verticalArrangement = Arrangement.Center, // Vertikal di tengah
+        horizontalAlignment = Alignment.CenterHorizontally // Horizontal di tengah
     ) {
         Image(
             painter = painterResource(R.drawable.logo),
-            contentDescription = "Logo"
+            contentDescription = "Logo",
+            modifier = Modifier.size(200.dp)
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(12.dp))
         Text(
             text = "Absensi Mahasiswa\nPoliteknik Negeri Madiun",
             color = Color.White,
