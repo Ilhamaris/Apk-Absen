@@ -40,7 +40,7 @@ fun HistoryScreen() {
     }
 
     fun getCurrentTime(): String {
-        val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
         return timeFormat.format(Date())
     }
 
@@ -85,10 +85,11 @@ fun HistoryScreen() {
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.align(Alignment.Start) // Rata kiri
                 )
+                Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     text = "Absensi Anda",
                     color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 25.sp),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.align(Alignment.CenterHorizontally) // Rata tengah
                 )
