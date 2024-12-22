@@ -2,6 +2,7 @@ package com.ilhamptra.absens
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -25,6 +26,7 @@ import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.ui.res.painterResource
 
 @Composable
 fun LoginScreen(onLoginSuccess: () -> Unit) {
@@ -51,6 +53,11 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Image(
+            painter = painterResource(R.drawable.logo),
+            contentDescription = "Logo",
+            modifier = Modifier.size(100.dp)
+        )
         // Teks di bagian atas login form
         Text(
             text = "Absensi Mahasiswa\nPoliteknik Negeri Madiun",
@@ -102,9 +109,12 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     loginError = true
                 }
             },
-            modifier = Modifier.fillMaxWidth(0.8f)
+            modifier = Modifier.fillMaxWidth(0.8f),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Yellow
+            )
         ) {
-            Text("LOGIN")
+            Text(text = "Login", color = Color.Black)
         }
 
         // pesan error

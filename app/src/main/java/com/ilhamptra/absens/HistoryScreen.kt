@@ -192,9 +192,12 @@ fun HistoryScreen() {
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
                         onClick = { showDialog = false },
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF055BB5)
+                        )
                     ) {
-                        Text(text = "Close")
+                        Text(text = "Close", color = Color.White)
                     }
                 }
             }
