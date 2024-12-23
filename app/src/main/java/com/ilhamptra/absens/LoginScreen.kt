@@ -101,7 +101,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         // Login Button
         Button(
             onClick = {
-                if (username == "Ilham Putra Arysila" && password == "12345678") {
+                if (username == "mge" && password == "123456") {
                     // Simpan status login
                     saveLoginStatus(context)
                     onLoginSuccess()
